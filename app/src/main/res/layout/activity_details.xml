@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:text="@string/repoTitle"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVDetailsNameInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVDetailsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVDetailsNameInit"
+            android:layout_toRightOf="@id/TVDetailsNameInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVHtmlInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/html"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVHtml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVHtmlInit"
+            android:layout_toRightOf="@id/TVHtmlInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVCreatedInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/created"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVCreated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVCreatedInit"
+            android:layout_toRightOf="@id/TVCreatedInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVUpdatedInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/updated"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVUpdated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVUpdatedInit"
+            android:layout_toRightOf="@id/TVUpdatedInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVLangInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lang"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVLangInit"
+            android:layout_toRightOf="@id/TVLangInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVBranchInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/branch"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVBranch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVBranchInit"
+            android:layout_toRightOf="@id/TVBranchInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVWikiInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wiki"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVWiki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVWikiInit"
+            android:layout_toRightOf="@id/TVWikiInit" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/colorPrimaryDark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:text="@string/ownerTitle"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/IVOwnerAuthor"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVOwnerInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ownerName"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVOwner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVOwnerInit"
+            android:layout_toRightOf="@id/TVOwnerInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVIdInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVIdInit"
+            android:layout_toRightOf="@id/TVIdInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVTypeInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVTypeInit"
+            android:layout_toRightOf="@id/TVTypeInit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TVUserHtmlInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userHtml"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TVUserHtml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/TVUserHtmlInit"
+            android:layout_toRightOf="@id/TVUserHtmlInit" />
+    </RelativeLayout>
+
+</LinearLayout>

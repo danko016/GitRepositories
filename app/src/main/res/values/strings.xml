@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">GitRepositories</string>
+    <string name="title">Git Repositories</string>
+    <string name="enter">Enter</string>
+    <string name="name">Name: </string>
+    <string name="author">Author full name: </string>
+    <string name="watchers">Watchers: </string>
+    <string name="forks">Forks: </string>
+    <string name="issues">Issues: </string>
+    <string name="html">HTML Url: </string>
+    <string name="created">Created at: </string>
+    <string name="updated">Updated at: </string>
+    <string name="lang">Language: </string>
+    <string name="score">Score: </string>
+    <string name="branch">Default branch: </string>
+    <string name="wiki">Has wiki: </string>
+    <string name="enterRepo">Enter repository: </string>
+    <string name="filter">Filter </string>
+    <string name="ownerTitle">Owner details </string>
+    <string name="ownerName">Owner name: </string>
+    <string name="id">Id: </string>
+    <string name="type">Type: </string>
+    <string name="repoTitle">Repository details</string>
+    <string name="userHtml">User url: </string>
+
+
+
+</resources>
