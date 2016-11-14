@@ -13,10 +13,4 @@ class RepositoryInteractor{
         val service = RestAdapter.getApiService
         return service.getRepositories(name, page)
     }
-
-    fun getRepositoriesAsync(): Observable<Repositories> {
-        val service = RestAdapter.getApiService
-        return service.getRepositories("a",0)
-    }
-
 }

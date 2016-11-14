@@ -36,8 +36,6 @@ class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>, 
                 .build()
         adapter = component.adapter()
         layoutManager = component.layout()
-
-
     }
 
     override fun loadData(pullToRefresh: Boolean) {
@@ -134,11 +132,8 @@ class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>, 
             override fun onLoadMore(page: Int, totalItemsCount: Int) {
                 presenter.loadMoreRepositories(false)
             }
-
         })
     }
-
-
 }
 
 
