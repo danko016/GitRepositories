@@ -12,6 +12,4 @@ interface ApiService{
 
     @GET("/search/repositories")
     fun getRepositories(@Query("q") name: String, @Query("page") page: Int): Observable<Repositories>
-
-
 }
