@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Git Repositories</string>
+    <string name="app_name">Git Repos</string>
     <string name="title">Git Repositories</string>
     <string name="enter">Enter</string>
     <string name="name">Name: </string>
