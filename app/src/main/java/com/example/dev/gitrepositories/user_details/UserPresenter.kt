@@ -1,22 +1,21 @@
-package com.example.dev.gitrepositories.details_activity_component
+package com.example.dev.gitrepositories.user_details
 
-import android.content.Intent
-import android.net.Uri
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter
 import javax.inject.Inject
 
 /**
  * Created by dev on 13.11.16..
  */
-class DetailsPresenter
+class UserPresenter
 @Inject
-constructor() : MvpBasePresenter<DetailsView>() {
+constructor() : MvpBasePresenter<UserView>() {
 
-    override fun attachView(view: DetailsView?) {
+    override fun attachView(view: UserView?) {
         super.attachView(view)
     }
 
     override fun detachView(retainInstance: Boolean) {
         super.detachView(retainInstance)
     }
+
 }

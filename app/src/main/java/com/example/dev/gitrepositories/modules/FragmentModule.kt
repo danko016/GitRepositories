@@ -10,7 +10,7 @@ import dagger.Provides
  * Created by dev on 12.11.16..
  */
 @Module
-class FragmentModule (val fragmentManager: FragmentManager){
+class FragmentModule (private val fragmentManager: FragmentManager){
 
     @Provides
     fun providesFragmentManager(): FragmentManager{
@@ -19,7 +19,6 @@ class FragmentModule (val fragmentManager: FragmentManager){
 
     @Provides
     fun providesListFragment(): List<Fragment>{
-        val list: List<Fragment> = listOf(RepositoryFragment())
-        return list
+        return listOf(RepositoryFragment())
     }
 }

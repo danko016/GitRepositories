@@ -14,6 +14,5 @@ class LayoutModule(val context: Context) {
     @Provides
     fun providesLinearLayoutManager(): LinearLayoutManager {
         return LinearLayoutManager(context)
-
     }
 }

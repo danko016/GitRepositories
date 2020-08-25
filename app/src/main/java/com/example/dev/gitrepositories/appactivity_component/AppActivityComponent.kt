@@ -7,9 +7,6 @@ import com.example.dev.gitrepositories.modules.FragmentModule
 import dagger.Component
 import javax.inject.Singleton
 
-/**
- * Created by dev on 12.11.16..
- */
 @Singleton
 @Component(modules = arrayOf(AppModule::class, FragmentModule::class))
 interface AppActivityComponent{

@@ -3,7 +3,7 @@
     <string name="title">Git Repositories</string>
     <string name="enter">Enter</string>
     <string name="name">Name: </string>
-    <string name="author">Author full name: </string>
+    <string name="author">Author: </string>
     <string name="watchers">Watchers: </string>
     <string name="forks">Forks: </string>
     <string name="issues">Issues: </string>
@@ -22,6 +22,9 @@
     <string name="type">Type: </string>
     <string name="repoTitle">Repository details</string>
     <string name="userHtml">User url: </string>
+    <string name="search_label">Search</string>
+    <string name="web_view_button">Open in webview</string>
+    <string name="open_user_detail_button">Open user detail</string>
 
 
 

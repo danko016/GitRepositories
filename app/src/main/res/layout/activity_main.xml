@@ -19,7 +19,7 @@
         android:text="@string/title" />
 
     <Button
-        android:id="@+id/BTNGoTo"
+        android:id="@+id/btnEnter"
         android:layout_marginTop="100sp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

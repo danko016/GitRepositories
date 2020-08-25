@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.dev.gitrepositories.details_activity_component.DetailsActivity">
+    tools:context="com.example.dev.gitrepositories.user_details.UserActivity">
 
 
     <include layout="@layout/view_loading" />
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include layout="@layout/repository_details" />
+            <include layout="@layout/user_details" />
 
         </RelativeLayout>
     </ScrollView>

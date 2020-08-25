@@ -1,11 +1,9 @@
-package com.example.dev.gitrepositories.details_activity_component
+package com.example.dev.gitrepositories.user_details
 
-import android.net.Uri
 import com.example.dev.gitrepositories.models.Repository
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView
 
 /**
  * Created by dev on 13.11.16..
  */
-interface DetailsView : MvpLceView<Repository> {
-}
+interface UserView : MvpLceView<Repository>

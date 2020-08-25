@@ -1,6 +1,7 @@
 package com.example.dev.gitrepositories.repository_component
 
 import android.util.Log
+import android.view.View
 import com.example.dev.gitrepositories.models.Repository
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter
 import org.greenrobot.eventbus.EventBus
@@ -17,8 +18,7 @@ class RepositoryPresenter
 @Inject
 constructor() : MvpBasePresenter<RepositoryView>() {
 
-    val interactor = RepositoryInteractor()
-    var nextPage: Int = 0
+    private val interactor = RepositoryInteractor()
     var repos: MutableList<Repository> = ArrayList()
 
     fun defaultView() {
@@ -26,13 +26,18 @@ constructor() : MvpBasePresenter<RepositoryView>() {
     }
 
     @Subscribe
-    fun onEvent(event: RepositoryAdapter.Event){
+    fun onEvent(event: RepositoryAdapter.EventOpenRepository){
         view?.openDetailsActivity(event.position)
     }
 
-    fun loadRepositories(pullToRefresh: Boolean) {
+    @Subscribe
+    fun onEvent(event: RepositoryAdapter.EventOpenUser){
+        view?.openUserDetail(event.position)
+    }
 
-        interactor.getRepositoriesAsync(view?.searchRepos()!!, 0)
+    fun loadRepositories(pullToRefresh: Boolean) {
+        view?.getRepositoryName()?.let { repoName ->
+            interactor.getRepositoriesAsync(repoName, 0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ repositories ->
@@ -43,41 +48,8 @@ constructor() : MvpBasePresenter<RepositoryView>() {
                         view?.showContent()
                     }
                 }, { t -> view?.showError(t, pullToRefresh) })
-
-    }
-
-    fun loadMoreRepositories(pullToRefresh: Boolean) {
-        nextPage++
-        interactor.getRepositoriesAsync(view?.searchRepos()!!, nextPage)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ repositories ->
-                    view?.addData(repositories)
-                    view?.showContent()
-                }, { t -> view?.showError(t, pullToRefresh) })
-
-    }
-
-    fun search(char: CharSequence) {
-        if (char.length == 0) {
-            Log.d("tag", "list is not filtered")
-            view?.setData(repos)
-            view?.showContent()
-        } else {
-
-            Log.d("tag", "list is filtered")
-
-            val temp: MutableList<Repository> = ArrayList()
-
-            for (repo in repos) {
-                if (repo.name?.contains(char, true)!!) {
-                    temp.add(repo)
-                }
-            }
-
-            view?.setData(temp)
-            view?.showContent()
         }
+
     }
 
     override fun attachView(view: RepositoryView?) {

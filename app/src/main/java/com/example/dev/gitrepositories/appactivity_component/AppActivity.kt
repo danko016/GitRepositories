@@ -16,7 +16,7 @@ constructor() : MvpActivity<AppActivityView, AppActivityPresenter>(), AppActivit
     lateinit var component: AppActivityComponent
     var adapter: ViewPagerAdapter? = null
 
-    fun injectDependencies() {
+    private fun injectDependencies() {
         component = DaggerAppActivityComponent.builder()
                 .appModule(AppModule(applicationContext))
                 .fragmentModule(FragmentModule(supportFragmentManager))

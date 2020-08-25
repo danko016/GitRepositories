@@ -7,29 +7,31 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.dev.gitrepositories.R
 import com.example.dev.gitrepositories.details_activity_component.DetailsActivity
 import com.example.dev.gitrepositories.models.Repositories
 import com.example.dev.gitrepositories.models.Repository
 import com.example.dev.gitrepositories.modules.AppModule
 import com.example.dev.gitrepositories.modules.LayoutModule
+import com.example.dev.gitrepositories.user_details.UserActivity
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceFragment
 import com.mcxiaoke.koi.ext.onClick
-import com.mcxiaoke.koi.ext.onTextChange
-import kotlinx.android.synthetic.main.repository_layout.*
+import kotlinx.android.synthetic.main.repository_main_layout.*
 
 /**
  * Created by dev on 12.11.16..
  */
-class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>, RepositoryView, RepositoryPresenter>(), SwipeRefreshLayout.OnRefreshListener, RepositoryView {
+class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>,
+        RepositoryView,
+        RepositoryPresenter>(),
+        SwipeRefreshLayout.OnRefreshListener, RepositoryView {
 
 
     lateinit var component: RepositoryComponent
     var layoutManager: LinearLayoutManager? = null
     var adapter: RepositoryAdapter? = null
 
-    fun injectDependencies() {
+    private fun injectDependencies() {
         component = DaggerRepositoryComponent.builder()
                 .appModule(AppModule(context))
                 .layoutModule(LayoutModule(context))
@@ -43,7 +45,6 @@ class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>, 
     }
 
     override fun setData(data: List<Repository>) {
-        loadMore(layoutManager!!)
         adapter?.repoList?.clear()
         adapter?.repoList?.addAll(data)
     }
@@ -73,7 +74,7 @@ class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>, 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         injectDependencies()
-        return inflater?.inflate(R.layout.repository_layout, container, false)
+        return inflater?.inflate(R.layout.repository_main_layout, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -84,13 +85,18 @@ class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>, 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
         contentView.setOnRefreshListener(this)
-
-        etSearch.onTextChange { charSequence, start, before, count -> presenter.search(charSequence) }
     }
 
     override fun openDetailsActivity(position: Int) {
-        val repository: Repository = adapter?.repoList!![position]
-        val intent: Intent = Intent(context, DetailsActivity::class.java)
+        val repository = adapter?.repoList?.get(position)
+        val intent = Intent(context, DetailsActivity::class.java)
+        intent.putExtra("repository",repository)
+        context.startActivity(intent)
+    }
+
+    override fun openUserDetail(position: Int) {
+        val repository = adapter?.repoList?.get(position)
+        val intent = Intent(context, UserActivity::class.java)
         intent.putExtra("repository",repository)
         context.startActivity(intent)
     }
@@ -101,12 +107,8 @@ class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>, 
         }
     }
 
-    override fun searchRepos(): String{
-        val searchRepos = etSearchQ.text.toString()
-        if (searchRepos == ("")){
-            Toast.makeText(context, "Please enter text in repository label", Toast.LENGTH_SHORT).show()
-        }
-        return searchRepos
+    override fun getRepositoryName(): String? {
+        return etSearch.text.toString()
     }
 
     override fun showContent() {
@@ -125,14 +127,6 @@ class RepositoryFragment : MvpLceFragment<SwipeRefreshLayout, List<Repository>, 
         super.showLoading(pullToRefresh)
         loadingView.visibility = View.VISIBLE
         errorView.visibility = View.GONE
-    }
-
-    override fun loadMore(layout: LinearLayoutManager){
-        recyclerView.addOnScrollListener(object : EndlessRecyclerViewScrollListener(layout){
-            override fun onLoadMore(page: Int, totalItemsCount: Int) {
-                presenter.loadMoreRepositories(false)
-            }
-        })
     }
 }
 

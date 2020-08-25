@@ -1,51 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5sp">
-
-        <TextView
-            android:id="@+id/TVNameInit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/name"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/TVName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/TVNameInit"
-            android:layout_toRightOf="@id/TVNameInit" />
-    </RelativeLayout>
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:text="@string/ownerTitle"
+        android:textSize="20sp" />
 
     <ImageView
-        android:id="@+id/IVImage"
-        android:layout_width="50sp"
-        android:layout_height="50sp" />
+        android:id="@+id/IVOwnerAuthor"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/TVAuthorInit"
+            android:id="@+id/TVOwnerInit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/author"
+            android:text="@string/ownerName"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/TVAuthor"
+            android:id="@+id/TVOwner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/TVAuthorInit"
-            android:layout_toRightOf="@id/TVAuthorInit" />
+            android:layout_toEndOf="@id/TVOwnerInit"
+            android:layout_toRightOf="@id/TVOwnerInit" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -53,18 +43,18 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/TVWatchersInit"
+            android:id="@+id/TVIdInit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/watchers"
+            android:text="@string/id"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/TVWatchers"
+            android:id="@+id/TVId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/TVWatchersInit"
-            android:layout_toRightOf="@id/TVWatchersInit" />
+            android:layout_toEndOf="@id/TVIdInit"
+            android:layout_toRightOf="@id/TVIdInit" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -72,18 +62,18 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/TVForkInit"
+            android:id="@+id/TVTypeInit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/forks"
+            android:text="@string/type"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/TVFork"
+            android:id="@+id/TVType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/TVForkInit"
-            android:layout_toRightOf="@id/TVForkInit" />
+            android:layout_toEndOf="@id/TVTypeInit"
+            android:layout_toRightOf="@id/TVTypeInit" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -91,23 +81,26 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/TVIssueInit"
+            android:id="@+id/TVUserHtmlInit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/issues"
+            android:text="@string/userHtml"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/TVIssue"
+            android:id="@+id/TVUserHtml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/TVIssueInit"
-            android:layout_toRightOf="@id/TVIssueInit" />
+            android:layout_toEndOf="@id/TVUserHtmlInit"
+            android:layout_toRightOf="@id/TVUserHtmlInit" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark" />
+    <Button
+        android:id="@+id/btnWebViewUser"
+        android:layout_marginTop="10dp"
+        android:text="@string/web_view_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.dev.gitrepositories.details_activity_component
+package com.example.dev.gitrepositories.user_details
 
 import android.content.Intent
 import android.net.Uri
@@ -8,86 +8,61 @@ import com.bumptech.glide.Glide
 import com.example.dev.gitrepositories.R
 import com.example.dev.gitrepositories.models.Repository
 import com.example.dev.gitrepositories.modules.AppModule
-import com.example.dev.gitrepositories.repository_component.RepositoryAdapter
-import com.example.dev.gitrepositories.user_details.UserActivity
 import com.hannesdorfmann.mosby.mvp.MvpActivity
 import com.mcxiaoke.koi.ext.onClick
 import kotlinx.android.synthetic.main.repository_details.*
 import kotlinx.android.synthetic.main.activity_details_layout.*
+import kotlinx.android.synthetic.main.user_details.*
 import kotlinx.android.synthetic.main.view_error.*
 import kotlinx.android.synthetic.main.view_loading.*
-import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
 
-
-
-class DetailsActivity
+class UserActivity
 @Inject
-constructor() : MvpActivity<DetailsView, DetailsPresenter>(),  DetailsView {
+constructor() : MvpActivity<UserView, UserPresenter>(),  UserView {
 
-    lateinit var component: DetailsComponent
-
-    private var repository: Repository? = null
+    lateinit var component: UserComponent
 
     private fun injectDependencies(){
-        component = DaggerDetailsComponent.builder()
+        component = DaggerUserComponent.builder()
                 .appModule(AppModule(applicationContext))
                 .build()
     }
 
     override fun setData(data: Repository?) {
-        TVDetailsName.text = data?.name
-        TVHtml.text = data?.htmlUrl
-        TVCreated.text = data?.createdAt
-        TVUpdated.text = data?.updatedAt
-        TVLanguage.text = data?.language
-        TVBranch.text = data?.defaultBranch
-        TVWiki.text = data?.hasWiki.toString()
+        TVOwner.text = data?.owner?.login
+        TVId.text = data?.owner?.id.toString()
+        TVType.text = data?.owner?.type
+        TVUserHtml.text = data?.owner?.htmlUrl
+
+        val url = data?.owner?.avatarUrl
+        Glide.with(applicationContext).load(url).into(IVOwnerAuthor)
     }
 
     override fun loadData(pullToRefresh: Boolean) {
 
     }
 
-    override fun createPresenter(): DetailsPresenter {
+    override fun createPresenter(): UserPresenter {
         return component.presenter()
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injectDependencies()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details_layout)
-        repository = intent.extras.get("repository") as Repository
+        setContentView(R.layout.user_layout)
+        val repository = intent.extras.get("repository") as Repository
         setData(repository)
 
-        TVHtml.onClick {
-            val uri = Uri.parse(TVHtml.text.toString())
+        btnWebViewUser.onClick {
+            val uri = Uri.parse(repository.htmlUrl)
             val intent = Intent()
             intent.data = uri
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             applicationContext.startActivity(intent)
-        }
-
-        btnWeb.onClick {
-            val uri = Uri.parse(TVHtml.text.toString())
-            val intent = Intent()
-            intent.data = uri
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            applicationContext.startActivity(intent)
-        }
-
-        btnOpenUserDetail.onClick {
-            openUserDetail()
         }
 
         showContent()
-    }
-
-    private fun openUserDetail() {
-        val intent = Intent(this, UserActivity::class.java)
-        intent.putExtra("repository",repository)
-        startActivity(intent)
     }
 
     override fun showContent() {

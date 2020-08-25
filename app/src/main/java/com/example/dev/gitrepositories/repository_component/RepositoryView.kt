@@ -12,14 +12,14 @@ interface RepositoryView : MvpLceView<List<Repository>>{
 
     fun loadDefaultState()
 
-    fun loadMore(layout: LinearLayoutManager)
-
     fun addData(data: Repositories?)
 
-    fun searchRepos(): String
+    fun getRepositoryName(): String?
 
     fun loadEnteredData()
 
     fun openDetailsActivity(position: Int)
+
+    fun openUserDetail(position: Int)
 
 }

@@ -36,7 +36,7 @@ constructor(val context: Context, val repoList: MutableList<Repository>): Recycl
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyViewHolder? {
-        val itemView = LayoutInflater.from(parent?.context).inflate(R.layout.repository_list, parent, false)
+        val itemView = LayoutInflater.from(parent?.context).inflate(R.layout.repository_item, parent, false)
         return MyViewHolder(itemView)
     }
 
@@ -47,30 +47,29 @@ constructor(val context: Context, val repoList: MutableList<Repository>): Recycl
     inner class MyViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         override fun onClick(v: View?) {
-            EventBus.getDefault().post(Event(adapterPosition))
+            EventBus.getDefault().post(EventOpenRepository(adapterPosition))
         }
 
-        var tvName: TextView
-        var tvAuthor: TextView
-        var tvWatchers: TextView
-        var tvFork: TextView
-        var tvIssues: TextView
-        var ivImage: ImageView
+        var tvName: TextView = itemView?.findViewById<TextView>(R.id.TVName) as TextView
+        var tvAuthor: TextView = itemView?.findViewById<TextView>(R.id.TVAuthor) as TextView
+        var tvWatchers: TextView = itemView?.findViewById<TextView>(R.id.TVWatchers) as TextView
+        var tvFork: TextView = itemView?.findViewById<TextView>(R.id.TVFork) as TextView
+        var tvIssues: TextView = itemView?.findViewById<TextView>(R.id.TVIssue) as TextView
+        var ivImage: ImageView = itemView?.findViewById<ImageView>(R.id.IVImage) as ImageView
+
+
 
         init {
-            tvName = itemView?.findViewById(R.id.TVName) as TextView
-            tvAuthor = itemView?.findViewById(R.id.TVAuthor) as TextView
-            tvWatchers = itemView?.findViewById(R.id.TVWatchers) as TextView
-            tvFork = itemView?.findViewById(R.id.TVFork) as TextView
-            tvIssues = itemView?.findViewById(R.id.TVIssue) as TextView
-            ivImage = itemView?.findViewById(R.id.IVImage) as ImageView
             itemView?.setOnClickListener(this)
+            ivImage.setOnClickListener {
+                EventBus.getDefault().post(EventOpenUser(adapterPosition))
+            }
         }
     }
 
-    class Event(val position: Int)
+    class EventOpenRepository(val position: Int)
 
-
+    class EventOpenUser(val position: Int)
 }
 
 

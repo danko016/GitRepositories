@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.dev.gitrepositories.R
 import com.example.dev.gitrepositories.appactivity_component.AppActivity
+import com.example.dev.gitrepositories.details_activity_component.DetailsActivity
+import com.example.dev.gitrepositories.models.Repository
 import com.example.dev.gitrepositories.modules.AppModule
+import com.example.dev.gitrepositories.repository_component.RepositoryFragment
 import com.hannesdorfmann.mosby.mvp.MvpActivity
 import com.mcxiaoke.koi.ext.onClick
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,7 +19,7 @@ constructor() : MvpActivity<MainActivityView, MainActivityPresenter>(), MainActi
 
     lateinit var component: MainActivityComponent
 
-    fun injectDependencies() {
+    private fun injectDependencies() {
         component = DaggerMainActivityComponent.builder()
                 .appModule(AppModule(applicationContext))
                 .build()
@@ -33,7 +36,7 @@ constructor() : MvpActivity<MainActivityView, MainActivityPresenter>(), MainActi
 
         val intent = Intent(applicationContext, AppActivity::class.java)
 
-        BTNGoTo.onClick {
+        btnEnter.onClick {
             startActivity(intent)
         }
     }
